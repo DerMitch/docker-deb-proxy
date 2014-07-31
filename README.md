@@ -22,7 +22,7 @@ You should use a volume to keep downloaded packages between container restarts. 
 ```bash
 # Run squid on localhost:8080
 docker run -d --name deb-proxy -p 80:8080 -v /var/cache:/cache dermitch/deb-proxy
-``
+```
 
 # Use with Dockerfiles
 
