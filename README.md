@@ -3,10 +3,6 @@ docker-deb-proxy
 
 squid-deb-proxy preconfigured in a container - for faster updates and container builds
 
-****************
-Work in progress
-****************
-
 # Build container
 
 There is a automated build available at the [Docker Hub](). You can build it yourself if you want to change settings like the max cache size (defaults to 4000 MB).
@@ -20,9 +16,9 @@ docker build -t dermitch/deb-proxy .
 You should use a volume to keep downloaded packages between container restarts. The maximum size for the cache directory is about 4000 MB.
 
 ```bash
-# Run squid on localhost:8080
-docker run -d --name deb-proxy -p 80:8080 -v /var/cache:/cache dermitch/deb-proxy
-```
+# Run squid on localhost:8080 ($HOSTPORT:80)
+docker run -d --name deb-proxy -p 8080:80 -v /var/cache:/cache dermitch/deb-proxy
+``
 
 # Use with Dockerfiles
 
