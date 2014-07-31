@@ -15,7 +15,7 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup; \
     echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache; \
     apt-get update;
 
-RUN apt-get install -y squid-deb-proxy
+RUN apt-get install -y --no-install-recommends squid-deb-proxy
 
 # Configuration
 # 4000 MB should be enough for a lot of packages
