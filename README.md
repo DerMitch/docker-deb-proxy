@@ -5,7 +5,7 @@ squid-deb-proxy preconfigured in a container - for faster updates and container 
 
 # Build container
 
-There is a automated build available at the [Docker Hub](). You can build it yourself if you want to change settings like the max cache size (defaults to 4000 MB).
+There is a automated build available at the [Docker Hub](https://registry.hub.docker.com/u/dermitch/deb-proxy/). You can build it yourself if you want to change settings like the max cache size (defaults to 4000 MB).
 
 ```bash
 docker build -t dermitch/deb-proxy .
