@@ -19,10 +19,12 @@ RUN apt-get install -y --no-install-recommends squid-deb-proxy
 
 # Configuration
 # 4000 MB should be enough for a lot of packages
-# @todo disable: cache_access_log cache_log cache_store_log
 RUN install --owner=proxy --group=proxy -d /cache; \
 	sed -i 's/http_port 8000/http_port 80/' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
 	sed -i 's/cache_dir aufs \/var\/cache\/squid-deb-proxy 40000 16 256/cache_dir aufs \/cache 4000 16 256/' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
+	sed -i '/^cache_access_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
+	sed -i '/^cache_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
+	sed -i '/^cache_store_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
 	echo "get.docker.io" >> /etc/squid-deb-proxy/mirror-dstdomain.acl.d/10-default; \
 	echo "ppa.launchpad.net" >> /etc/squid-deb-proxy/mirror-dstdomain.acl.d/10-default
 
