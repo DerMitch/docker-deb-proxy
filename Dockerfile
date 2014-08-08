@@ -24,10 +24,9 @@ RUN install --owner=proxy --group=proxy -d /cache; \
 	sed -i 's/cache_dir aufs \/var\/cache\/squid-deb-proxy 40000 16 256/cache_dir aufs \/cache 4000 16 256/' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
 	sed -i '/^cache_access_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
 	sed -i '/^cache_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
-	sed -i '/^cache_store_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf; \
-	echo "get.docker.io" >> /etc/squid-deb-proxy/mirror-dstdomain.acl.d/10-default; \
-	echo "ppa.launchpad.net" >> /etc/squid-deb-proxy/mirror-dstdomain.acl.d/10-default
+	sed -i '/^cache_store_log/d' /etc/squid-deb-proxy/squid-deb-proxy.conf;
 
+ADD extra-mirrors.list /etc/squid-deb-proxy/mirror-dstdomain.acl.d/20-extra
 ADD boot.sh /boot.sh
 
 EXPOSE 80
